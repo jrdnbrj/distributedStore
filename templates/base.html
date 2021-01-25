@@ -1,0 +1,52 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <title>{% block title %}Tienda Online{% endblock %}</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="{% url 'user:home' %}"><strong>Tienda Online</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                {% if request.user.is_authenticated %}
+                    {% comment %} <li class="nav-item">
+                        <a class="nav-link" href="{% url 'jugadores' %}">Jugadores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'clubes' %}">Clubes</a>
+                    </li>
+                    {% if request.user.is_superuser %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'editar_club' %}">Mi Club</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'nuevo_club' %}">Registrarse como Club</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'reporte' %}">Reporte</a>
+                    </li> {% endcomment %}
+                {% endif %}
+            </ul>
+            {% comment %} {% if user.is_authenticated %}
+                <span class="text-light">Hola, {{ user.username }}</span>
+                <a type="button" class="btn btn-success mx-3" href="{% url 'cerrar_sesion' %}">Cerrar Sesión</a>
+            {% else %}
+                <a type="button" class="btn btn-outline-success" href="{% url 'iniciar_sesion' %}">Iniciar Sesión</a>
+                <a type="button" class="btn btn-success mx-3" href="{% url 'crear_cuenta' %}">Crear Cuenta</a>
+            {% endif %} {% endcomment %}
+        </div>
+    </nav>
+    <main class="container">
+        {% block content %} {% endblock %}
+    </main>
+</body>
+</html>
