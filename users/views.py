@@ -1,9 +1,13 @@
 from django.shortcuts import render
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from users.forms import UserForm
+from users.models import User
+from products.models import Product
 
 def home(request):
-    return render(request, 'base.html')
+    products = Product.objects.all()
+    return render(request, 'home.html', { 'products': products })
 
 def create_account(request):
     if request.method == 'POST':

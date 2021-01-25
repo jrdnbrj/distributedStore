@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Jugadores{% endblock %}
+{% block content %}
+    <div class="shadow-lg col-xl-8 mx-auto m-5 px-5 py-2">
+        <div class="row ml-3 mb-3 justify-content-between">
+            <h2 class="m-3 display-4">Productos</h2>
+            {% if request.user.is_superuser %}
+                {% comment %} <a class="btn btn-sm btn-success my-5" href="{% url 'nuevo_jugador' %}">Nuevo</a> {% endcomment %}
+            {% endif %}
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr class="text-center">
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.description }}</td>
+                        <td>$ {{ product.price }}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-sm">Agregar al Carrito</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

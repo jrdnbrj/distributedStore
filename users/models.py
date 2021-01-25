@@ -6,9 +6,11 @@ from products.models import Product
 class User(AbstractUser):
     shopping_cart = models.OneToOneField(
         ShoppingCart,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        null=True, blank=True
     )
-    products = models.ForeignKey(
-        Product,
-        on_delete=models.CASCADE
-    )
+    products = models.ManyToManyField(Product, null=True, blank=True)
+    # REQUIRED_FIELDS = ['email', 'password']
+
+    def __str__(self):
+        return self.username
