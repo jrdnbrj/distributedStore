@@ -27,8 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = 'users.User'
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,8 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products.apps.ProductsConfig',
-    'shopping_cart.apps.ShoppingCartConfig',
-    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [

@@ -17,34 +17,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto d-flex">
-                    {% comment %} {% if request.user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'jugadores' %}">Jugadores</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'clubes' %}">Clubes</a>
-                        </li>
-                        {% if request.user.is_superuser %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'editar_club' %}">Mi Club</a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'nuevo_club' %}">Registrarse como Club</a>
-                            </li>
-                        {% endif %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'reporte' %}">Reporte</a>
-                        </li>
-                    {% endif %} {% endcomment %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'product:create_product' %}">Agregar Producto</a>
+                    </li>
                 </ul>
-                {% if user.is_authenticated %}
+                {% comment %} {% if user.is_authenticated %}
                     <span class="text-light">Hola, {{ user.username }}</span>
                     <a type="button" class="btn btn-light mx-3" href="{% url 'user:sign_off' %}">Cerrar Sesión</a>
                 {% else %}
                     <a type="button" class="btn btn-outline-light" href="{% url 'user:log_in' %}">Iniciar Sesión</a>
                     <a type="button" class="btn btn-light mx-3" href="{% url 'user:create_account' %}">Crear Cuenta</a>
-                {% endif %}
+                {% endif %} {% endcomment %}
             </div>
         </div>
     </nav>
