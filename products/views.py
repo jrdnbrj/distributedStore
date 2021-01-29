@@ -3,9 +3,11 @@ from products.models import Product
 from products.forms import ProductForm
 
 def create_product(request):
+    print('POST:', request.POST)
+    print('FILES:', request.FILES)
     context = {}
     if request.method == 'POST':
-        product = ProductForm(request.POST)
+        product = ProductForm(request.POST, request.FILES)
         if product.is_valid():
             product.save()
             return redirect('user:home')
@@ -17,7 +19,6 @@ def create_product(request):
 def edit_product(request, id):
     product = Product.objects.get(id=id)
     context = { 'product': product, 'action': 'Editar' }
-    print('POST:', request.POST)
     if request.method == 'POST':
         product = ProductForm(request.POST, instance=product)
         if product.is_valid():

@@ -15,6 +15,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -74,15 +76,15 @@ WSGI_APPLICATION = 'store.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'remote': {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'distributedstore',
-        'USER': 'administrad0r',
-        'PASSWORD': 'administrad0r',
-        'HOST': '85.10.205.173',
+        'NAME': 'BVhfMo97Pk',
+        'USER': 'BVhfMo97Pk',
+        'PASSWORD': 'TIwfHqcCNf',
+        'HOST': 'remotemysql.com',
         'POST': '3306'
     },
-    'default': {
+    'local': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }

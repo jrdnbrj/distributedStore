@@ -3,11 +3,24 @@
 {% block content %}
     <div class="shadow-lg col-xl mx-auto m-5 px-5 py-2">
         <h2 class="m-4 display-4">{% if action %}{{ action }}{% else %}Nuevo{% endif %} Producto</h2>
-        <form method="POST">{% csrf_token %}
+        <form method="POST" enctype="multipart/form-data">{% csrf_token %}
             <div class="form-group">
                 <label>Nombre</label><br>
                 <input type="text" class="form-control" name="name" value="{% if form.errors %}{{ form.name.value }}{% else %}{{ product.name }}{% endif %}">
                 {% for error in form.name.errors %}
+                    <small class="text-danger">{{ error }}</small>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                <label>Imagen</label>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="image">
+                    <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">
+                        {% if form.errors %}{{ form.image.value }}{% else %}Haz click aquí para escoger una imagen{% endif %}
+                    </label>
+                </div>
+                {% comment %} <input type="text" class="form-control" name="image" value="{% if form.errors %}{{ form.image.value }}{% else %}{{ product.image }}{% endif %}"> {% endcomment %}
+                {% for error in form.image.errors %}
                     <small class="text-danger">{{ error }}</small>
                 {% endfor %}
             </div>

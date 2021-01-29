@@ -1,7 +1,41 @@
 {% extends 'base.html' %}
 {% block title %}Jugadores{% endblock %}
 {% block content %}
-    <div class="shadow-lg col-xl mx-auto m-5 px-5 py-2">
+    <div class="row">
+        {% for product in products %}
+            <div class="modal fade" id="delete_product" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Eliminar Producto</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ¿Estás seguro que deseas eliminar <strong>{{ product.name }}</strong> definitivamente?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <a type="button" class="btn btn-danger" href="{% url 'product:delete_product' product.id %}">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card m-4" style="width: 18rem;">
+                <img class="card-img-top" src="media/{{ product.image }}" alt="Card image cap">
+                <div class="card-body">
+                    <div class="row">
+                        <h5 class="card-title"><a href="{% url 'product:edit_product' product.id %}">{{ product.name }}</a></h5>
+                        &nbsp&nbsp&nbsp<a type="button" class="text-danger" data-toggle="modal" data-target="#delete_product">X</button>
+                    </div>   
+                    <a href="#" class="btn btn-sm btn-primary">$ {{ product.price }}</a>
+                    <p class="card-text">{{ product.description }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% comment %} <div class="shadow-lg col-xl mx-auto m-5 px-5 py-2">
         <div class="row ml-3 mb-3 justify-content-between">
             <h2 class="m-3 display-4">Productos</h2>
             <a class="btn btn-sm btn-success my-5" href="{% url 'product:create_product' %}">Nuevo Producto</a>
@@ -48,5 +82,5 @@
                 {% endfor %}
             </tbody>
         </table>
-    </div>
+    </div> {% endcomment %}
 {% endblock %}
