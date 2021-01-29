@@ -27,7 +27,7 @@ SECRET_KEY = 'd#1$fq(2#c*#o*^l@que2*63%_q7*4$==5(75*6c-vhl1w=oe='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'jrdnbrj.pythonanywhere.com']
 
 # Application definition
 
@@ -79,9 +79,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'BVhfMo97Pk',
-        'USER': 'BVhfMo97Pk',
-        'PASSWORD': 'TIwfHqcCNf',
-        'HOST': 'remotemysql.com',
+        'USER': 'jrdnbrj',
+        'PASSWORD': 'Administrad0r',
+        'HOST': 'jrdnbrj.mysql.pythonanywhere-services.com',
         'POST': '3306'
     },
     'local': {
